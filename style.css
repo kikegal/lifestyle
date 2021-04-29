@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body{
     min-height: 1000px;
 }
@@ -15,15 +16,31 @@ header{
     left: 0;
     width: 100%;
     height: 100vh;
+    padding: 0 50px;
     background: rgb(103, 153, 165);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     transition: 1s;
 }
-header .sticky{
-    height: 80px;
+header.sticky{
+    height: 100px;
 }
+
+header.sticky .logo{
+    position: absolute;
+    font-size: 1.5em;
+    left: 50px;
+    transform: translate(0, -50%);
+
+}
+
+header.sticky ul{
+    display: inline-flex;
+    flex-direction: row;
+
+}
+
 header .banner{
     position: absolute;
     top: 0;
@@ -38,8 +55,8 @@ header .logo{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 45px;
-    color: rgb(7, 7, 7);
+    font-size: 3em;
+    color: #fff;
     font-weight: 700;
     transition: 1.5s;
     text-decoration: none;
@@ -50,22 +67,100 @@ nav {
     display: flex;
     z-index: 1;
 }
+
 nav ul{
     position: relative;
     display: flex;
-    transition: 0.25s;
+    display: none;
+   
 }
 nav ul li{
+    padding: 0 8px;
     list-style: none;
 }
 nav ul li a{
-    color: black;
+    color: #fff;
     display: inline-block;
     padding: 10px 15px;
     font-size: 1.2em;
+    transition: all 300ms ease-in-out;
     text-decoration: none;
 }
 nav ul li a:hover{
+    font-weight: 600;
+    letter-spacing: 2px;
     color:rgb(86, 49, 189)
+
+}
+
+
+
+
+/*  Media Queries responsive */ 
+@media (max-width: 991px) {
+    header .logo {
+      font-size: 1.5em;
+    }
+
+    header.sticky .logo {
+        font-size: 1em;
+    
+    }
+
+    header .banner {
+        opacity: 0.5;
+    }
+
+    nav ul {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    nav.active ul {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 100px);
+        background: rgb(77, 102, 119);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center ;
+        flex-direction: column;
+        transition: all 300ms ease-in-out;
+    }
+
+    header.sticky nav.active ul {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul li a{
+        margin-bottom: 12px;
+        font-size: 1.5em;
+    }
+
+    header.sticky .toggle {
+        z-index: 2;
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background: url(bars-solid.svg);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 450ms ease-in-out;
+    }
+
+    header.sticky .toggle.active{
+        background: url(bars-solid.svg);
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
 
 }
